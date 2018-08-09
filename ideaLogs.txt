@@ -1,0 +1,11 @@
+
+May 15th Ideas
+1. Analyze reason codes to see which ones have a specific reason code. Or which reasoncode combination appears at which frequency and MOST frequently (NA|RL appears 300 times and is the most frequently appearing)  
+2. Analyze scores breakdown. How many records between 80-90 for example?
+
+***Another script?
+- Go through all the records find the record for JOHN KEEGAN
+- give me the result on this file. Was John Keegan, verified, what was his reverse-append, were there any other numbers that appeared twice on John Keegan's number
+
+
+
