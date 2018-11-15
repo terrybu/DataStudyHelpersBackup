@@ -10,6 +10,10 @@ from datetime import datetime
 kLineTypeColumnHeaderName = "lineType"
 kCarrierColumnHeaderName = "carrier"
 kPrimaryReasonCodesColumnHeader = "reasonCodes"
+kEmailColumnHeaderName = "email"
+kFirstNameColumnHeaderName = "firstName"
+kCityColumnHeaderName = "city"
+kStateColumnHeaderName = "state"
 
 logFile = None
 startTime = datetime.now()
@@ -66,6 +70,9 @@ def analyzeRecords(allRows):
     blankReasonCodesCount = 0
     primaryReasonCodesArray = []
 
+    blankFirstNamesCount = 0
+    recordCountWithFirstNames = 0
+
     for row in allRows:
         ###LINE TYPE CHECK 
         if row[kLineTypeColumnHeaderName] == 'Mobile':
@@ -89,6 +96,13 @@ def analyzeRecords(allRows):
             for element in row[kPrimaryReasonCodesColumnHeader].split('|'):
                 primaryReasonCodesArray.append(element)
 
+        ###firstName CHECK 
+        if row[kFirstNameColumnHeaderName] == '':
+        	blankFirstNamesCount += 1
+        else:
+        	recordCountWithFirstNames += 1
+
+
 
     reportAnalytics("Reporting Analytics: ****************************")
 
@@ -109,6 +123,11 @@ def analyzeRecords(allRows):
         reportAnalytics(carrierMsg)
 
     reportReasonCodesAnalytics(primaryReasonCodesArray)
+
+    #Analyzing First Names
+    print("%d records had first names. %d records had blank first names"% (recordCountWithFirstNames,blankFirstNamesCount))
+
+
 
 
 def reportAnalytics(msg):
